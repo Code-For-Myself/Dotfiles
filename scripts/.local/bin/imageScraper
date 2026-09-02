@@ -1,0 +1,18 @@
+#!/bin/zsh
+chapter="$1"
+if [[ -z "$chapter" ]]; then
+    echo "Usage: imageScraper <chapter>"
+    exit 1
+fi
+url_list=$(mktemp)
+
+trap 'rm -f "$url_list"' EXIT
+
+for i in {1..50}; do
+    page=$(printf "%02d" "$i")
+    url="https://img.witchhatatelier.com.lv/uploads/manga/chapter-${chapter}.5/${page}-witch-hat-atelier-chapter-${chapter}.5.webp"
+    echo "${url}" >> "$url_list"
+done
+
+# Give the list to aria2
+aria2c -i "$url_list" -d "$HOME/chapter${chapter}" -j 1

@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+exec /usr/bin/java -Djdk.xml.totalEntitySizeLimit=0 -classpath '/usr/share/java/ltex-ls/*' -Dapp.name='ltex-ls' -Dapp.pid="$$" -Dapp.repo='/usr/share/ltex-ls/lib' -Dapp.home='/usr/share/ltex-ls' -Dbasedir='/usr/share/ltex-ls' org.bsplines.ltexls.LtexLanguageServerLauncher "$@"

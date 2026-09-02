@@ -1,0 +1,18 @@
+#!/bin/zsh
+url_list=$(mktemp)
+
+trap 'rm -f "$url_list"' EXIT
+
+for i in {1..98}; do
+  chap="$i"
+  for j in {1..50}; do
+    page=$(printf "%02d" "$j")
+    url="https://img.witchhatatelier.com.lv/uploads/manga/chapter-${chap}/${page}-witch-hat-atelier-chapter-${chap}.webp"
+    echo "${url}" >> "$url_list"
+  done
+done
+
+aria2c -i "$url_list" -d "$HOME/Manga-Witchatelier" -j 1
+cd "$HOME/Manga-Witchatelier" || exit 1
+zip -q -j "MangaWitchatelier.cbz" ./*webp
+mv "MangaWitchatelier.cbz" "$HOME/Witchatelier/"

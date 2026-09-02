@@ -1,0 +1,18 @@
+#!/bin/zsh
+url_list=$(mktemp)
+
+trap 'rm -f "$url_list"' EXIT
+
+for i in {1..7}; do
+  chap="$i"
+  for j in {1..50}; do
+    page=$(printf "%02d" "$j")
+    url="https://pic.readkakegurui.com/file/sancdn/delicious-in-dungeon/chapter-${chap}/${page}.webp"
+    echo "${url}" >> "$url_list"
+  done
+done
+
+aria2c -i "$url_list" -d "$HOME/Manga-DeliciousDungeon" -j 1
+cd "$HOME/Manga-DeliciousDungeon" || exit 1
+zip -q -j "MangaDeliciousDungeon.cbz" ./*webp
+mv "MangaDeliciousDungeon.cbz" "$HOME/Witchatelier/"
