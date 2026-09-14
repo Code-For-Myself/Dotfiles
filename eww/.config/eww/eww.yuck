@@ -1,0 +1,12 @@
+
+(defwindow welcome
+  :monitor 0
+  :geometry (geometry :x "300px" :y "155px" :width "500px" :height "100px" :anchor "top left")
+  :stacking "fg"
+  :windowtype "normal"
+  (welcome-layout))
+
+(defwidget welcome-layout []
+  (box :class "welcome-box" :orientation "v" :space-evenly false
+    (label :class "welcome-text" :text "Welcome back, Linux User!")
+    (label :class "sub-text" :text "[Insert generic welcome message]")))

@@ -1,17 +1,17 @@
 -- ~/.config/nvim/lua/plugins/ui.lua
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "rose-pine/neovim",
+    name = "rose-pine",
     priority = 1000,
     opts = {
-      flavour = "mocha", -- or "macchiato", "frappe", "latte"
+      variant = "main",
     },
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "rose-pine",
     },
   },
 }

@@ -9,18 +9,13 @@ if true then return {} end
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
-
-  -- Configure LazyVim to load gruvbox
   {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "gruvbox",
-    },
+    "RRethy/base16-nvim",
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("base16-atelier-heath")
+    end,
   },
-
-  -- change trouble config
   {
     "folke/trouble.nvim",
     -- opts will be merged with the parent spec

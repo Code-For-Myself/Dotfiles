@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+
+target_dir="$HOME/pdf"
+mkdir -p "$target_dir"
+
+integer count=0
+
+echo "Searching for PDFs in $HOME..."
+
+# Search strictly inside your Home directory ($HOME)
+find "$HOME" -path "$target_dir" -prune \
+    -o -iname "*.pdf" -type f -print 2>/dev/null | while IFS= read -r pdf_path; do
+
+    # Extract base filename
+    filename="$(basename "$pdf_path")"
+    
+    # Avoid overwriting: If a link/file with this name already exists, add a counter
+    dest="$target_dir/$filename"
+    if [[ -e "$dest" || -L "$dest" ]]; then
+        # Skip if link already points to the exact same file
+        [[ "$(readlink -f "$dest")" == "$(readlink -f "$pdf_path")" ]] && continue
+        
+        # Append unique prefix if filename collides
+        dest="$target_dir/${count}_$filename"
+    fi
+
+    # Create absolute symbolic link safely
+    ln -sf "$(readlink -f "$pdf_path")" "$dest" 2>/dev/null && ((count++))
+done
+
+echo "Done! Indexed $count PDF(s) into $target_dir."cho "Done! Indexed $count PDF(s) into $target_dir."

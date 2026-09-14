@@ -3,16 +3,20 @@ url_list=$(mktemp)
 
 trap 'rm -f "$url_list"' EXIT
 
-for i in {1..7}; do
+for i in {70..76}; do
   chap="$i"
+  chap2=$(printf "%02d" "$i")
   for j in {1..50}; do
-    page=$(printf "%02d" "$j")
+    page="$j"
+    page2=$(printf "%02d" "$j")
     url="https://pic.readkakegurui.com/file/sancdn/delicious-in-dungeon/chapter-${chap}/${page}.webp"
     echo "${url}" >> "$url_list"
+    echo "  out=${chap2}-${page2}.webp" >> "$url_list"
   done
 done
 
-aria2c -i "$url_list" -d "$HOME/Manga-DeliciousDungeon" -j 1
+aria2c -i "$url_list" -d "$HOME/Manga-DeliciousDungeon" -j 1 --allow-overwrite=true --connect-timeout=5
 cd "$HOME/Manga-DeliciousDungeon" || exit 1
-zip -q -j "MangaDeliciousDungeon.cbz" ./*webp
-mv "MangaDeliciousDungeon.cbz" "$HOME/Witchatelier/"
+zip -q -j "MangaDeliciousDungeonBook11.cbz" ./*webp
+
+mv "MangaDeliciousDungeonBook11.cbz" "$HOME/DeliciousDungeon/"

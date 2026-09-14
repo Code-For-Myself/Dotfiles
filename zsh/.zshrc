@@ -53,3 +53,5 @@ alias stowit='stow --verbose'
 alias unstowit='stow --delete --verbose'
 alias restowit='stow --restow --verbose'
 export PATH="$HOME/.local/bin:$PATH"
+export QT_QPA_PLATFORMTHEME=qt6ct
+export PATH="/usr/lib/qt6/bin:$PATH"

@@ -1,0 +1,30 @@
+
+font_family      JetBrainsMono Nerd Font
+font_size        14.0
+
+background_opacity 1.0
+
+scrollback_lines 2000
+
+cursor_shape beam
+cursor_blink_interval 0
+
+window_padding_width 6
+
+tab_bar_style powerline
+
+include themes/Tokyo Night.conf
+cursor_shape_unfocused hollow
+remember_window_size no
+initial_window_width 140c
+initial_window_height 35c
+hide_window_decorations no
+scrollback_lines 2000
+enable_audio_bell no
+copy_on_select clipboard
+window_padding_width 12 20 12 20
+scrollbar never
+mouse_hide_wait 0.1
+allow_remote_control yes
+confirm_os_window_close 0
+notify_on_cmd_finish unfocused

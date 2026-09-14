@@ -50,4 +50,5 @@ ls.add_snippets("tex", {
   s({ trig = "grad", snippetType = "autosnippet" }, fmta([[\grad{<>}]], { i(1) })),
   s({ trig = "div", snippetType = "autosnippet" }, fmta([[\div{<>}]], { i(1) })),
   s({ trig = "curl", snippetType = "autosnippet" }, fmta([[\curl{<>}]], { i(1) })),
+  s({ trig = "mrm", snippetType = "autosnippet" }, fmta([[<>_{\text{<>}}]], { i(1), i(2) })),
 })
