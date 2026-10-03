@@ -51,7 +51,7 @@ Scope {
                 }
             }
             property int collapsedWidth: 8
-            property int expandedWidth: 64
+            property int expandedWidth: 164
 
             anchors {
                 top: true

@@ -3,7 +3,7 @@ url_list=$(mktemp)
 
 trap 'rm -f "$url_list"' EXIT
 
-for i in {70..76}; do
+for i in {77..82}; do
   chap="$i"
   chap2=$(printf "%02d" "$i")
   for j in {1..50}; do

@@ -6,8 +6,9 @@ QtObject {
     readonly property color widgetBg: "#313244"
 
     // Accents
-    readonly property color secondary: "#732424"
+    //readonly property color secondary: "#732424"
     readonly property color primary: "#d92323"
+    readonly property color secondary: "#b23478"
     readonly property color text: "#ffffff"
     readonly property color subtext: "#7b7b7b"
 
